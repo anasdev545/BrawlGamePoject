@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://vil1wbax281t"]
+
+[ext_resource type="PackedScene" uid="uid://dgfiwhy35yk81" path="res://players/PlatformerPlayer.tscn" id="1_6ngjm"]
+[ext_resource type="Texture2D" uid="uid://defi8mradmsdc" path="res://icon.svg" id="1_r5v5w"]
+[ext_resource type="PackedScene" uid="uid://decq1uhy2hadr" path="res://Camera.tscn" id="3_kwi1c"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="4_brn86"]
+[ext_resource type="Texture2D" uid="uid://wn1c1qarnkcd" path="res://Evil Wizard 3/Sprites/Idle.png" id="5_gwwta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfpp0"]
+size = Vector2(1124, 82)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42vi6"]
+height = 58.0
+
+[node name="test" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(563, 420)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(11, 31)
+shape = SubResource("RectangleShape2D_kfpp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(11, 31)
+scale = Vector2(8.78125, 0.640625)
+texture = ExtResource("1_r5v5w")
+
+[node name="player" parent="." instance=ExtResource("1_6ngjm")]
+position = Vector2(393, 328)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("3_kwi1c")]
+visible = false
+position = Vector2(451.5, 330.5)
+zoom = Vector2(1.61569, 1.61569)
+min_zoom = 0.1
+max_zoom = 2.0
+margin = Vector2(125, 125)
+targets = [NodePath("../player"), NodePath("../CharacterBody2D")]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+visible = false
+position = Vector2(510, 333)
+script = ExtResource("4_brn86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_42vi6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture = ExtResource("5_gwwta")
+hframes = 10

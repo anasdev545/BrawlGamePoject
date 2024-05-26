@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://decq1uhy2hadr"]
+
+[ext_resource type="Script" path="res://Camera.gd" id="1_fgg8m"]
+
+[node name="Camera2D" type="Camera2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("1_fgg8m")
+min_zoom = 1.5
+max_zoom = 5
+
+[node name="shake timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="shake timer" to="." method="_on_shake_timer_timeout"]

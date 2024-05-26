@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbj148u6edflo"]
+
+[ext_resource type="Texture2D" uid="uid://co64k1to7lu5n" path="res://Evil Wizard 3/preview.png" id="1_4x7tt"]
+[ext_resource type="Script" path="res://Ghost.gd" id="2_lfwap"]
+
+[node name="Ghost" type="Sprite2D"]
+texture = ExtResource("1_4x7tt")
+script = ExtResource("2_lfwap")
