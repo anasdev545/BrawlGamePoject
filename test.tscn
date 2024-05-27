@@ -3,14 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dgfiwhy35yk81" path="res://players/PlatformerPlayer.tscn" id="1_6ngjm"]
 [ext_resource type="Texture2D" uid="uid://defi8mradmsdc" path="res://icon.svg" id="1_r5v5w"]
 [ext_resource type="PackedScene" uid="uid://decq1uhy2hadr" path="res://Camera.tscn" id="3_kwi1c"]
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="4_brn86"]
-[ext_resource type="Texture2D" uid="uid://wn1c1qarnkcd" path="res://Evil Wizard 3/Sprites/Idle.png" id="5_gwwta"]
+[ext_resource type="PackedScene" uid="uid://62sf1pqg2evj" path="res://backGrounds/nightlights.tscn" id="4_1psj8"]
+[ext_resource type="Script" path="res://StaticBody2D2.gd" id="5_qld7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfpp0"]
 size = Vector2(1124, 82)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_42vi6"]
-height = 58.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o2xt"]
 
 [node name="test" type="Node2D"]
 
@@ -28,28 +27,29 @@ scale = Vector2(8.78125, 0.640625)
 texture = ExtResource("1_r5v5w")
 
 [node name="player" parent="." instance=ExtResource("1_6ngjm")]
-position = Vector2(393, 328)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(577, 320)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("3_kwi1c")]
-visible = false
-position = Vector2(451.5, 330.5)
-zoom = Vector2(1.61569, 1.61569)
-min_zoom = 0.1
-max_zoom = 2.0
+position = Vector2(549, 342.5)
+zoom = Vector2(1.39661, 1.39661)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+move_speed = 0.2
+zoom_speed = 0.3
+min_zoom = 0.7
+max_zoom = 1.0
 margin = Vector2(125, 125)
-targets = [NodePath("../player"), NodePath("../CharacterBody2D")]
+targets = [NodePath("../player"), NodePath("../StaticBody2D2")]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-visible = false
-position = Vector2(510, 333)
-script = ExtResource("4_brn86")
+[node name="nightlights" parent="." instance=ExtResource("4_1psj8")]
+offset = Vector2(-400, 0)
+transform = Transform2D(1, 0, 0, 1, -400, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_42vi6")
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(521, 365)
+script = ExtResource("5_qld7o")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture_filter = 1
-texture = ExtResource("5_gwwta")
-hframes = 10
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_0o2xt")

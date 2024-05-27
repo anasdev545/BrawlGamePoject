@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://62sf1pqg2evj"]
+
+[ext_resource type="Texture2D" uid="uid://bso0rwy7c1bce" path="res://nature_6/2.png" id="1_67qhr"]
+[ext_resource type="Texture2D" uid="uid://bai1skxj77kac" path="res://nature_6/1.png" id="2_c2qka"]
+[ext_resource type="Texture2D" uid="uid://cepwqmfn54iv7" path="res://nature_6/3.png" id="3_unxs3"]
+
+[node name="nightlights" type="ParallaxBackground"]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxLayer2"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_67qhr")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_c2qka")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxLayer3"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_unxs3")
+centered = false
